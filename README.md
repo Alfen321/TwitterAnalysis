@@ -7,5 +7,5 @@
 1. Insert the data into the docker database by running `bash ./MGDB_insert_data`
 
 ## Run the program
-1. install pymongo `pip3 install pymongo`
-1. `python3 main.py`
+1. Install pymongo run:`pip3 install pymongo`
+1. Run the program: `python3 main.py`
