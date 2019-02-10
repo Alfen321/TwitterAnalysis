@@ -42,17 +42,17 @@ def q_2():
 
 def q_3(): #does not work
     print('3. Who is are the most mentioned Twitter users? (Provide the top five.)')
-    print('Does not work')
-    # print('Users mentioned the most:')
-    # pipeline = [
-    #     {"$match": {"text": {"$regex": "@\\w+", "$options": "si"}}},
-    #     # {"$group": {"_id": "", "count": {"$sum": 1}}},
-    #     # {"$sort": SON([("count", -1), ("user", -1)])},
-    #     {"$limit": 10}
-    # ]
-    # # tw = tweets.aggregate(pipeline)
-    # tw = tweets.find({"text": {"$regex": "@\\w+", "$options": "si"}}).limit(5)
-    # pp_all(tw)
+    print('Users mentioned the most:')
+    pipeline = [
+        {"$match": {"text": {"$regex": "@\\w*"}}},
+        {"$group": {
+            "_id": {"$substrCP": ["$text", {"$indexOfCP": ["$text", "@"]}, {"$indexOfCP": ["$text", " "]}]},
+            "count": {"$sum": 1}}},
+        {"$sort": SON([("count", -1), ("user", -1)])},
+        {"$limit": 5}
+    ]
+    tw = tweets.aggregate(pipeline)
+    pp_all(tw)
     print()
 
 
