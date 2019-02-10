@@ -1,0 +1,4 @@
+#! /bin/sh
+docker run -d --rm -v $(pwd)/data:/data/db \
+	-p 27017:27017 --name dbms \
+	mongo:latest

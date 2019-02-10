@@ -1,0 +1,2 @@
+#! bin/sh
+docker exec -it dbms mongoimport -d tweet -c training --type csv --file ./data/db/training.1600000.processed.noemoticon.csv --headerline
